@@ -1,0 +1,51 @@
+
+Project Naming Conventions
+
+General Principles:
+•	Naming Conventions: Use snake_case, with lowercase letters and understand ( _ ) to separate words.
+•	Language: Use English for all names.
+•	Avoid Reserved Words: Do not use SQL reserved words as object names.
+Table Naming Conventions
+	Bronze Rules:
+•	All names must start with source system name, and table names must match their original names without renaming.
+•	<sourcesystem>_<entity>
+o	< sourcesystem>: Name of the source system (e.g., crm, erp).
+o	<entity>: Exact table name from the source system.
+o	Example: crm_customer_info  Customer information from the CRM system.
+Silver Rules:
+•	All names must start with source system name, and table names must match their original names without renaming.
+•	<sourcesystem>_<entity>
+o	< sourcesystem>: Name of the source system (e.g., crm, erp).
+o	<entity>: Exact table name from the source system.
+o	Example: crm_customer_info  Customer information from the CRM system.
+Gold Rules:
+•	All names must use meaningful, business-aligned names for tables, starting with the category prefix.
+•	<category>_<entity>
+o	< category>: Describes the role of the table, such as dim (dimension) or fact (fact table).
+o	<entity>: Descriptive name of the table, aligned with the business domain (r.g., customer, products, sales).
+o	Example:
+	dim_customer  Dimension table for customer data.
+	fact_sales  Fact table containing sales transactions. 
+Glossary of Category Patterns
+Pattern	Meaning	Example(s)
+dim_	Dimension table	dim_customer, dim_product
+fact_	Fact Table	fact_sales
+agg_	Aggregated table	agg_customer, agg_sales_monthly
+
+Column Naming Conventions
+Surrogate Keys:
+•	All primary keys in dimension tables must use the suffix _key.
+•	<table_name>_key
+o	<table_name>: Refers to the name of the table or entity the key belongs to.
+o	 _key: A suffix indicating that this column is a surrogate key.
+o	Example: customer_key  Surrogate key in the dim_customers table.
+Technical Columns:
+•	All technical columns must start with the prefix dwh_, followed by a descriptive name indicating 
+
+Stored Procedure
+•	All stored procedures used for loading data must follow the naming pattern: load_<layer>.
+•	<layer> : Represents the layer being loaded, such as bronze, silver, or gold.
+•	Example: 
+o	load_bronze  Stored procedure for loading data into the Bronze layer.
+o	load_silver  Stored procedure for loading data into the Silver layer.
+
